@@ -67,7 +67,7 @@ namespace JWT.DEMO.Controllers
                 //production  
                 //build/videos
                 //clientapp/public/videos
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "clientapp/public/videos", fileName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "clientapp/build/videos", fileName);
                 using (var fileStream = new FileStream(path, FileMode.Create))
                 {
                     await file.CopyToAsync(fileStream);
@@ -116,13 +116,16 @@ namespace JWT.DEMO.Controllers
                 System.Console.WriteLine("User has liked");
             }
             var video = context.Videos.FirstOrDefault(x => x.Id == id);
-            var channelUser = context.ApplicationUsers.FirstOrDefault(x => x.Id.Equals(video.UserId)).UserName;
+            var channelUser = context.ApplicationUsers.FirstOrDefault(x => x.Id.Equals(video.UserId));
             VideoModel m = new VideoModel();
             m.Video = video;
             m.IsLiked = isLiked;
             m.Likes = context.Likes.Where(x => x.VideoId == id).Count();
-            m.ChannelName = channelUser;
+            m.ChannelName = channelUser.UserName;
+            m.ChannelId =  channelUser.Id;
             m.Views = ViewCount(id);
+            m.SubscribersCount = context.Subscriptions.Where(x=>x.ChannelId.Equals(channelUser.Id)).Count();
+            m.IsSubscribed = context.Subscriptions.Any(x=>x.UserId.Equals(userIdFromClamsInJwt) && x.ChannelId.Equals(channelUser.Id));
             return Json(m);
         }
         [HttpPut]

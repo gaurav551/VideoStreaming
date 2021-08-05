@@ -20,8 +20,5 @@ namespace _NET_REACT.Models
         public string UserId { get; set; }
         public string CommentText {get;set;}
         public DateTime CommentedOn  { get; set; } = DateTime.Now;
-
-
-
     }
 }

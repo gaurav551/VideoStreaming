@@ -11,13 +11,13 @@ const Layout = (props) => {
 
         <NavMenu onLogout={props.onLogout} isLogged={props.isLogged} />
         
-        <div className='container'>
+      
           <br></br>
           <br></br>
           
           <br></br>
           {props.children}
-        </div>
+     
         <Footer/>
       </div>
     );

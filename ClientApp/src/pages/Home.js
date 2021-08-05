@@ -1,6 +1,5 @@
 import React from 'react'
 import { WatchShare } from '../components/Layout/WatchShare'
-import { Search } from '../components/Search'
 import { Videos } from '../components/Video/Videos'
 
 export const Home = () => {

@@ -12,7 +12,7 @@ export const WatchShare = () => {
 					<h2>Watch share and upload with friends</h2>
 					<Link to='/register' title="">Create my account</Link>
 				</div>
-				<h3 className="headline">Video of the Day by <a href="#" title="">newfox media</a></h3>
+				
 			</div>
 		</section>
             }

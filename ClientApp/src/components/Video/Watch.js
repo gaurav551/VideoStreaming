@@ -15,6 +15,8 @@ import { SimilarVideoSidebar } from './SimilarVideoSidebar';
 
 export const Watch = (props) => {
 	const [likeStatus, setLikeStatus] = useState({ likes: 0, isLiked: false })
+	const [subscribeStatus, setSubscribeStatus] = useState({ subscribers: 0, isSubscribed: false })
+
 	//let  location  = useLocation();
 	//From Query String
 	let videoId = props.match.params.id//location.state.id
@@ -31,6 +33,7 @@ export const Watch = (props) => {
 			.then(resData => {
 				setVideos({ data: resData, isLoaded: true })
 				setLikeStatus({ likes: resData.likes, isLiked: resData.isLiked })
+				setSubscribeStatus({subscribers: resData.subscribersCount, isSubscribed: resData.isSubscribed})
 			}
 			)
 			.catch(e => alert(e));
@@ -59,6 +62,13 @@ export const Watch = (props) => {
 
 
 		}
+	}
+	const subscribeHandler = () => {
+		if (!isLoggedIn()) {
+			openNotification({ type: 'error', message: 'you must be logged in to subscribe', description: "" })
+
+		}
+		setSubscribeStatus({isSubscribed: !subscribeStatus.isSubscribed, subscribers: subscribeStatus.isSubscribed? subscribeStatus.subscribers-1 : subscribeStatus.subscribers+1 })
 	}
 
 
@@ -122,7 +132,7 @@ export const Watch = (props) => {
 									<ul className="chan_cantrz">
 
 										<li>
-											<a href="#" title="" className="subscribe">Subscribe <strong>13M</strong></a>
+											<a onClick={subscribeHandler} title="subscribe this channel" className="subscribe">{subscribeStatus.isSubscribed? "✔ Subscribed" : "Subscribe"}  <strong>{subscribeStatus.subscribers}</strong></a>
 										</li>
 									</ul>
 									<ul className="df-list">

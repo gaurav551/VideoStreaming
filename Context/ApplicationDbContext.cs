@@ -16,5 +16,6 @@ namespace JWT.DEMO.Context
          public DbSet<ApplicationUser> ApplicationUsers { get; set; }
          public DbSet<Like> Likes { get; set; }
          public DbSet<Comment> Comments { get; set; }
+         public DbSet<Subscription> Subscriptions { get; set; }
     }
 }

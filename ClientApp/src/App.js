@@ -39,6 +39,7 @@ import { Search } from './components/Video/Search';
         return (
       <Layout isLogged={isLogged} onLogout={logout}>
         <Route exact path='/' component={Home} />
+        <div className='container'>
         <Route exact path='/Login'> <Login onlogin={login}/> </Route>
         <Route exact path='/Register'> <Register onlogin={login}/> </Route>  
         <Route exact path='/myaccount'><MyAccount/></Route>
@@ -51,6 +52,7 @@ import { Search } from './components/Video/Search';
           path="/watch/:id"
           component={Watch}
         />
+        </div>
         
        
       </Layout>
