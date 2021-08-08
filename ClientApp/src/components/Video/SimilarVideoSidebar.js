@@ -14,6 +14,10 @@ const { data, error, isLoaded } = useApiRequest(
     {
         return <p>Loading</p>
     }
+    if(isLoaded && data.length===0)
+    {
+        return <p>Video list is empty 😑</p>
+    }
     return (
         <div>
          {data.map(x=> {return  <Video  key={x.id} id={x.id} title={x.title} videoName={x.videoName} views={x.views} channelName={x.channelName} uploadedOn={x.uploadDate}/>})}

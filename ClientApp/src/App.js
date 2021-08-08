@@ -12,6 +12,7 @@ import { MyVideos } from './pages/user/Video/MyVideos';
 import { VideoUpload } from './pages/user/Video/VideoUpload';
 import { Watch } from './components/Video/Watch';
 import { Search } from './components/Video/Search';
+import { Channel } from './pages/Channel';
 
   const App = () => {
 
@@ -52,7 +53,13 @@ import { Search } from './components/Video/Search';
           path="/watch/:id"
           component={Watch}
         />
-        </div>
+         </div>
+         <Route
+          exact
+          path="/channel/:id"
+          component={Channel}
+        />
+       
         
        
       </Layout>

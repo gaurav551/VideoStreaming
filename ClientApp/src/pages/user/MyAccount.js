@@ -16,7 +16,7 @@ export const MyAccount = () => {
     fetch('api/user/getuser',{
         headers : authHeader()
     }).then((response) => {
-    if(!response.ok) throw new Error(response.status);
+    if(!response.ok) throw new Error(response.status +" "+ response.statusText);
     else return response.json();
   })
   .then((data) => {

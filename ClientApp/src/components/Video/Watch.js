@@ -81,7 +81,7 @@ export const Watch = (props) => {
 
 	if (video.isLoaded) {
 
-		player = <div className="video-wrapper"><ReactPlayer playing={false} controls={true} width='100%' height='100%' className='react-player' url={`videos/${video.data.video.videoName}`} /> </div>
+		player = <div className="video-wrapper"><ReactPlayer playing={false} controls={true} width='100%' height='100%' className='react-player' url={`${video.data.video.videoName}`} /> </div>
 
 	}
 	if (!video.isLoaded) {
